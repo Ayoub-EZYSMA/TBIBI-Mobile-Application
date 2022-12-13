@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "808811972805",
+    "project_id": "tbibi-c4b18",
+    "storage_bucket": "tbibi-c4b18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808811972805:android:77485b46132b39e61088ac",
+        "android_client_info": {
+          "package_name": "com.example.tbibi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808811972805-l68j6so7ls16t45aivib0h9vh9j4gcp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO1f7jQ5tCB_5E-yiTKfJKGl2YXA51LcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808811972805-l68j6so7ls16t45aivib0h9vh9j4gcp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
