@@ -1,19 +1,73 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import '../widgets/button.dart';
 
-class formpage extends StatefulWidget {
-  const formpage({Key? key}) : super(key: key);
+
+class formpat extends StatefulWidget {
+  const formpat({super.key});
 
   @override
-  _formpageState createState() => _formpageState();
+  State<formpat> createState() => _formpatState();
 }
 
-class _formpageState extends State<formpage> {
-  // Initial Selected Value
+class _formpatState extends State<formpat> {
   String regioninitial = 'Tunis';
-  String specialiteinitial = 'Dermatologie';
-  String medecin1 = 'medecin1';
+  String specialiteinitial = 'Dermatologist';
+  String medecin1 = 'Dr. KAMMOUN Naceur';
+  final _auth = FirebaseAuth.instance;
+  final controllerName = TextEditingController();
+  final controllerEmail = TextEditingController();
+  final controllerPhone = TextEditingController();
+  final controllerLocalisation = TextEditingController();
+  final controllerField = TextEditingController();
+  final controllerDoc = TextEditingController();
+  final controllerDate = TextEditingController();
+  final controllerSymp = TextEditingController();
+
+  Future make_appointment(
+      String name, String email, int phone, String symp) async {
+    await FirebaseFirestore.instance
+        .collection('Form')
+        .add({'name': name, 'email': email, 'phone': phone, 'symp': symp});
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          title: Center(
+            child: Text(
+              'Hey it is Done!\nThank you for your time!',
+              style: TextStyle(
+                  color: Color.fromARGB(255, 10, 64, 88),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+          ),
+          content: Text(
+            "We will remind you of your appointment, so don't worry.\n              YOUR HEALTH IS IMPORTANT TO US <3",
+            style: TextStyle(
+                color: Color.fromARGB(255, 16, 91, 123),
+                fontWeight: FontWeight.bold,
+                fontSize: 10),
+          ),
+        );
+      },
+    );
+  }
+
+  void dispose() {
+    controllerName.dispose();
+    controllerEmail.dispose();
+    controllerPhone.dispose();
+
+    controllerSymp.dispose();
+    super.dispose();
+  }
+
   // List of items in our dropdown menu
   var region = [
     'Ariana',
@@ -41,41 +95,39 @@ class _formpageState extends State<formpage> {
     'Tunis',
     'Zaghouan'
   ];
-  var specialite = ['Dermatologie', 'cardiaque'];
-  var medecin = ['medecin1', 'medecin2'];
+  var specialite = ['Dermatologist', 'OB-Gyn'];
+  var medecin = ['Dr. KAMMOUN Naceur', 'Dr. HAMED Amira'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        titleTextStyle: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
-        title: const Text(
-          'Prendre un rendez-vous',
+        backgroundColor: Color.fromARGB(255, 10, 64, 88),
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: Color.fromARGB(255, 247, 246, 246)),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        shadowColor: Color.fromARGB(255, 58, 105, 120),
-        backgroundColor: Color.fromARGB(250, 250, 0, 101),
+        title: (Text(
+          '             Fill the Form',
+        )),
       ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Scrollbar(
-          thumbVisibility: true,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: ListView(
+            padding: EdgeInsets.only(top: 35),
             children: [
+              Padding(padding: EdgeInsets.only(top: 50)),
               Container(
                 height: 18.0,
                 padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: Text(
-                  'saisir votre nom et prénom',
+                  'Your Name',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -86,12 +138,12 @@ class _formpageState extends State<formpage> {
                 ),
               ),
               SizedBox(
-                height: 28,
+                height: 40,
                 child: TextField(
+                  controller: controllerName,
                   textAlign: TextAlign.center,
                   onChanged: (value) {},
                   decoration: InputDecoration(
-                    hintText: 'nom et prénom ',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 10,
@@ -103,7 +155,7 @@ class _formpageState extends State<formpage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color.fromARGB(255, 58, 105, 120),
+                        color: Color.fromRGBO(235, 13, 87, 1),
                         width: 1,
                       ),
                       borderRadius: BorderRadius.all(
@@ -128,10 +180,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'saisir votre email',
+                  'Your Email',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -142,12 +194,12 @@ class _formpageState extends State<formpage> {
                 ),
               ),
               SizedBox(
-                height: 28,
+                height: 40,
                 child: TextField(
+                  controller: controllerEmail,
                   textAlign: TextAlign.center,
                   onChanged: (value) {},
                   decoration: InputDecoration(
-                    hintText: 'Email',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 10,
@@ -159,7 +211,7 @@ class _formpageState extends State<formpage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color.fromARGB(255, 58, 105, 120),
+                        color: Color.fromRGBO(235, 13, 87, 1),
                         width: 1,
                       ),
                       borderRadius: BorderRadius.all(
@@ -168,7 +220,7 @@ class _formpageState extends State<formpage> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color.fromARGB(255, 58, 105, 120),
+                        color: Color.fromARGB(255, 10, 64, 88),
                         width: 2,
                       ),
                       borderRadius: BorderRadius.all(
@@ -184,10 +236,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'saisir votre N° de téléphone',
+                  'Phone Number',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -198,12 +250,12 @@ class _formpageState extends State<formpage> {
                 ),
               ),
               SizedBox(
-                height: 28,
+                height: 40,
                 child: TextField(
+                  controller: controllerPhone,
                   textAlign: TextAlign.center,
                   onChanged: (value) {},
                   decoration: InputDecoration(
-                    hintText: 'N° de téléphone ',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 10,
@@ -215,7 +267,7 @@ class _formpageState extends State<formpage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color.fromARGB(255, 58, 105, 120),
+                        color: Color.fromRGBO(235, 13, 87, 1),
                         width: 1,
                       ),
                       borderRadius: BorderRadius.all(
@@ -224,7 +276,7 @@ class _formpageState extends State<formpage> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color.fromARGB(255, 58, 105, 120),
+                        color: Color.fromARGB(255, 10, 64, 88),
                         width: 2,
                       ),
                       borderRadius: BorderRadius.all(
@@ -240,10 +292,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'séléctionner votre localisation',
+                  'Your Localisation',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -256,7 +308,7 @@ class _formpageState extends State<formpage> {
               Center(
                 child: SizedBox(
                   width: 500,
-                  height: 28,
+                  height: 40,
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
@@ -270,7 +322,7 @@ class _formpageState extends State<formpage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromRGBO(235, 13, 87, 1),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.all(
@@ -279,7 +331,7 @@ class _formpageState extends State<formpage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromARGB(255, 10, 64, 88),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.all(
@@ -300,6 +352,7 @@ class _formpageState extends State<formpage> {
                         child: Text(items),
                       );
                     }).toList(),
+
                     // After selecting the desired option,it will
                     // change button value to selected value
                     onChanged: (String? newValue) {
@@ -316,10 +369,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'séléctionner la spécialité',
+                  'Choose The Field',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -332,7 +385,7 @@ class _formpageState extends State<formpage> {
               Center(
                 child: SizedBox(
                   width: 500,
-                  height: 28,
+                  height: 40,
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
@@ -346,7 +399,7 @@ class _formpageState extends State<formpage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromRGBO(235, 13, 87, 1),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.all(
@@ -355,7 +408,7 @@ class _formpageState extends State<formpage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromARGB(255, 10, 64, 88),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.all(
@@ -392,10 +445,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'séléctionner le médecin',
+                  'Choose a Doctor',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -408,7 +461,7 @@ class _formpageState extends State<formpage> {
               Center(
                 child: SizedBox(
                   width: 500,
-                  height: 28,
+                  height: 40,
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
@@ -422,7 +475,7 @@ class _formpageState extends State<formpage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromRGBO(235, 13, 87, 1),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.all(
@@ -431,7 +484,7 @@ class _formpageState extends State<formpage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromARGB(255, 10, 64, 88),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.all(
@@ -470,10 +523,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'choisir la date du rendez-vous',
+                  "Your Appointment's Date",
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -486,7 +539,7 @@ class _formpageState extends State<formpage> {
               Center(
                 child: SizedBox(
                   width: 500,
-                  height: 28,
+                  height: 40,
                   child: DateTimePicker(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
@@ -500,7 +553,7 @@ class _formpageState extends State<formpage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromRGBO(235, 13, 87, 1),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.all(
@@ -509,7 +562,7 @@ class _formpageState extends State<formpage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromARGB(255, 10, 64, 88),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.all(
@@ -550,10 +603,10 @@ class _formpageState extends State<formpage> {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 58, 105, 120),
+                  color: Color.fromRGBO(235, 13, 87, 1),
                 ),
                 child: const Text(
-                  'vos symptômes',
+                  'Your Symptoms',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Color.fromARGB(255, 250, 247, 247),
@@ -567,6 +620,7 @@ class _formpageState extends State<formpage> {
                   width: 500,
                   height: 60,
                   child: TextField(
+                    controller: controllerSymp,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 5,
@@ -579,7 +633,7 @@ class _formpageState extends State<formpage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromRGBO(235, 13, 87, 1),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.all(
@@ -588,26 +642,39 @@ class _formpageState extends State<formpage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 58, 105, 120),
+                          color: Color.fromARGB(255, 10, 64, 88),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
                       ),
-                      labelText: 'message',
-                      hintText: 'message',
                     ),
                     autofocus: false,
                   )),
               SizedBox(
                 height: 8,
               ),
-              Button7(
-                color: Color.fromARGB(250, 250, 0, 101),
-                title: 'Envoyer',
-                onPressed: () {},
-              )
+              Container(
+                height: 40,
+                width: 150,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await make_appointment(
+                        controllerName.text,
+                        controllerEmail.text,
+                        int.parse(controllerPhone.text),
+                        controllerSymp.text);
+                    _dialogBuilder(context);
+                    ;
+                  },
+                  child: Text('Send'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 10, 64, 88),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
             ],
           ),
         ),

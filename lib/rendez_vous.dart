@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tbibi/prendre_rendez_vous.dart';
+import 'package:tbibi/form.dart';
+
 import '../widgets/button.dart';
 
 class rendezvous extends StatefulWidget {
@@ -10,8 +11,18 @@ class rendezvous extends StatefulWidget {
 }
 
 class _rendezvousState extends State<rendezvous> {
-  final titles = ["Rendez-vous 1", "Rendez-vous  2", "Rendez-vous 3"];
+  final titles = [
+    "Rendez-vous 07/01/2023",
+    "Rendez-vous 05/08/2022",
+    "Rendez-vous 12/07/2022",
+    "Rendez-vous 01/06/2022",
+    "Rendez-vous 10/06/2022",
+    "Rendez-vous 29/05/2022"
+  ];
   final subtitles = [
+    "Dr Med Amine Abess",
+    "Dr Med Aziz Abessi",
+    "Dr Med  Bilkhir",
     "Dr Med Amine Abess",
     "Dr Med Aziz Abessi",
     "Dr Med  Bilkhir"
@@ -33,18 +44,18 @@ class _rendezvousState extends State<rendezvous> {
           backgroundColor: Color.fromARGB(250, 250, 0, 101),
         ),
         backgroundColor: Colors.white,
-        body: Padding(
+        body: Container(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
-                  height: 200,
+                Container(
+                  height: 500,
                   child: ListView.builder(
                     itemCount: titles.length,
                     itemBuilder: (context, index) {
-                      return Card(
+                      return Container(
                         //                           <-- Card widget
                         child: ListTile(
                           leading: Icon(Icons.calendar_today),
@@ -55,12 +66,9 @@ class _rendezvousState extends State<rendezvous> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 100,
-                ),
                 FloatingActionButton.extended(
-                  label: Text('nouveau rendez-vous'), // <-- Text
-                  backgroundColor: Color.fromARGB(255, 58, 105, 120),
+                  label: Text('Make an appointment'), // <-- Text
+                  backgroundColor: Color.fromARGB(255, 10, 64, 88),
                   icon: Icon(
                     Icons.add,
                     size: 24.0,
@@ -68,7 +76,7 @@ class _rendezvousState extends State<rendezvous> {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return formpage();
+                      return formpat();
                     }));
                   },
                 ),

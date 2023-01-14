@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tbibi/homepatient.dart';
 import 'package:tbibi/logo.dart';
-import 'package:tbibi/profilePatient.dart';
 import 'package:tbibi/signUpPatient.dart';
-import 'package:tbibi/widgets/button.dart';
-import 'package:tbibi/widgets/signUpDoctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class loginPatient extends StatefulWidget {
@@ -137,7 +135,7 @@ class _loginPatientState extends State<loginPatient> {
                     email: MyEmail, password: MyPassword);
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) {
-                  return logInPatient();
+                  return HomePatient();
                 }));
               } catch (e) {
                 print(e);

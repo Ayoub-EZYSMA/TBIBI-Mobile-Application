@@ -1,10 +1,7 @@
 import 'dart:ffi';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import 'package:flutter/src/widgets/container.dart';
+import 'package:tbibi/search.dart';
 
 class findDoctor extends StatelessWidget {
   const findDoctor({super.key});
@@ -23,6 +20,12 @@ class findDoctor extends StatelessWidget {
           ),
           shadowColor: Color.fromARGB(255, 58, 105, 120),
           backgroundColor: Color.fromARGB(250, 250, 0, 101),
+          actions: [
+            IconButton(
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => const Searchdoc())),
+                icon: const Icon(Icons.search))
+          ],
         ),
         body: SafeArea(
             child: ListView(children: [
@@ -87,7 +90,7 @@ class findDoctor extends StatelessWidget {
                 width: 190,
               ),
             ],
-          )
+          ),
         ])));
   }
 }

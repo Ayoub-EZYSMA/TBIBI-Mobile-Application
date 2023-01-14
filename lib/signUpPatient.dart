@@ -1,10 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tbibi/logInDoctor.dart';
-import 'package:tbibi/logInPatient.dart';
 import 'package:tbibi/logo.dart';
-import 'package:tbibi/profilePatient.dart';
-import 'package:tbibi/widgets/button.dart';
-import 'package:tbibi/widgets/signUpDoctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPatient extends StatefulWidget {
@@ -17,11 +13,47 @@ class SignUpPatient extends StatefulWidget {
 class _SignUpPatientState extends State<SignUpPatient> {
   final _auth = FirebaseAuth.instance;
   late User signedUp;
+  final _fname = TextEditingController();
+  final _lname = TextEditingController();
+  final _email = TextEditingController();
+  final _phone = TextEditingController();
+  final _psd = TextEditingController();
+  final _cpsd = TextEditingController();
+
+  Future signup() async {
+    if (_psd == _cpsd) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _email.text, password: _psd.text);
+    }
+    ;
+  }
+
+  Future adduser(String firstname, String lastname, String email, int phone,
+      String psd) async {
+    await FirebaseFirestore.instance.collection('Patients').add({
+      'fname': firstname,
+      'lname': lastname,
+      'email': email,
+      'phone': phone,
+      'psd': psd,
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getCurrentUser();
+  }
+
+  void dispose() {
+    _fname.dispose();
+    _lname.dispose();
+    _email.dispose();
+    _phone.dispose();
+    _psd.dispose();
+    _cpsd.dispose();
+    super.dispose();
   }
 
   String Fname = '', Lname = '', email = '', phone = '', psd = '', cpsd = '';
@@ -52,9 +84,7 @@ class _SignUpPatientState extends State<SignUpPatient> {
       Container(
         padding: const EdgeInsets.all(10),
         child: TextField(
-          onChanged: (val) {
-            Fname = val;
-          },
+          controller: _fname,
           decoration: InputDecoration(
               alignLabelWithHint: true,
               icon: Icon(
@@ -76,9 +106,7 @@ class _SignUpPatientState extends State<SignUpPatient> {
       Container(
         padding: const EdgeInsets.all(10),
         child: TextField(
-          onChanged: (val) {
-            Lname = val;
-          },
+          controller: _lname,
           decoration: InputDecoration(
               alignLabelWithHint: true,
               icon: Icon(
@@ -103,9 +131,7 @@ class _SignUpPatientState extends State<SignUpPatient> {
               child: Column(
             children: [
               TextField(
-                onChanged: (val) {
-                  email = val;
-                },
+                controller: _email,
                 decoration: InputDecoration(
                     alignLabelWithHint: true,
                     icon: Icon(
@@ -123,96 +149,82 @@ class _SignUpPatientState extends State<SignUpPatient> {
                     contentPadding: EdgeInsets.only(bottom: 15),
                     focusColor: Colors.white60),
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  onChanged: (val) {
-                    phone = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.phone,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'PHONE',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: true,
-                  onChanged: (val) {
-                    psd = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.visibility_off,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'PASSWORD',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: true,
-                  onChanged: (val) {
-                    cpsd = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'CONFIRM PASSWORD',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
             ],
           ))),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          controller: _phone,
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.phone,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'PHONE',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          controller: _psd,
+          obscureText: true,
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.visibility_off,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'PASSWORD',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          obscureText: true,
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.lock,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'CONFIRM PASSWORD',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
       Container(
         height: 50,
         width: 2,
         child: ElevatedButton(
           onPressed: () async {
-            try {
-              final neuUser = await _auth.createUserWithEmailAndPassword(
-                  email: email, password: psd);
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return loginPatient();
-              }));
-            } catch (e) {
-              print(e);
-            }
+            await adduser(_fname.text, _lname.text, _email.text,
+                int.parse(_phone.text), _psd.text);
           },
           child: Text('Sign Up'),
           style: ElevatedButton.styleFrom(
@@ -235,7 +247,6 @@ class _SignUpPatientState extends State<SignUpPatient> {
           )
         ],
       ),
-      Container()
     ]));
   }
 }

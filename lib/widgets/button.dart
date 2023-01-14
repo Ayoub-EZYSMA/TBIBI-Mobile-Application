@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tbibi/AsApatient.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:tbibi/calendardoctor.dart';
+import 'package:tbibi/homepatient.dart';
 import 'package:tbibi/logInDoctor.dart';
+import 'package:tbibi/search.dart';
 import 'package:tbibi/signUpPatient.dart';
 import 'package:tbibi/widgets/signUpDoctor.dart';
-import 'package:tbibi/profileDoctor.dart';
-import 'package:tbibi/AsAdoctor.dart';
-import 'package:tbibi/profilePatient.dart';
-import 'package:tbibi/AsApatient.dart';
 import 'package:tbibi/logInPatient.dart';
 
 class button1doc extends StatelessWidget {
@@ -45,7 +44,7 @@ class button1Patient extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return loginPatient();
+            return HomePatient();
           }));
         },
         child: Text('Log In'),
@@ -189,7 +188,7 @@ class button5 extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return MyApp();
+            return loginDoctor();
           }));
         },
         child: Text('Doctor'),
@@ -199,6 +198,31 @@ class button5 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20))),
       ),
       margin: EdgeInsets.only(top: 10, bottom: 25),
+    );
+  }
+}
+
+class buttonsearch extends StatelessWidget {
+  const buttonsearch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 2,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return bdpage();
+          }));
+        },
+        child: Text('Search'),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(250, 250, 0, 101),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20))),
+      ),
+      margin: EdgeInsets.only(top: 5, bottom: 5),
     );
   }
 }
@@ -214,7 +238,7 @@ class button6 extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return MyApp1();
+            return loginPatient();
           }));
         },
         child: Text('Patient'),
@@ -226,6 +250,306 @@ class button6 extends StatelessWidget {
       margin: EdgeInsets.only(
         top: 5,
       ),
+    );
+  }
+}
+
+class buttonc1 extends StatelessWidget {
+  const buttonc1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('TAHAR SFAR emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc2 extends StatelessWidget {
+  const buttonc2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('CHRLE NICOLLE emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc3 extends StatelessWidget {
+  const buttonc3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('RABTA emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc4 extends StatelessWidget {
+  const buttonc4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('BECHIR HAMZA emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc5 extends StatelessWidget {
+  const buttonc5({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('FARHAT HACHED emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc6 extends StatelessWidget {
+  const buttonc6({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('HABIB THAMER emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc7 extends StatelessWidget {
+  const buttonc7({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('FATTOUMA BOURGUIBA emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc8 extends StatelessWidget {
+  const buttonc8({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('HBIB BOUGUETFA emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc9 extends StatelessWidget {
+  const buttonc9({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('HABIB BOURGUIBA emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
+    );
+  }
+}
+
+class buttonc10 extends StatelessWidget {
+  const buttonc10({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final number = '+21652509407';
+    return ListTile(
+      title: Text('MONJI SLIM emergency'),
+      subtitle: Text(number),
+      trailing: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(250, 250, 0, 101),
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Color.fromARGB(250, 250, 0, 101),
+                  ))),
+          onPressed: () async {
+            await FlutterPhoneDirectCaller.callNumber(number);
+          },
+          child: Text('Call',
+              style: TextStyle(
+                  color: Color.fromARGB(248, 255, 255, 255),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
     );
   }
 }
@@ -259,69 +583,138 @@ class Button7 extends StatelessWidget {
   }
 }
 
-/*Container(
-          padding: const EdgeInsets.all(10),
-          child: TextFormField(
-            key: formstate,
-            onSaved: (val) {
-              email = val;
-            },
-            validator: (val) {
-              if (val != 3) {
-                return "your CIN must be 8 characters";
-              } else {
-                return null;
-              }
-            },
-            decoration: InputDecoration(
-                alignLabelWithHint: true,
-                icon: Icon(
-                  Icons.email,
-                  color: Color.fromARGB(255, 58, 105, 120),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
-                fillColor: Colors.white54,
-                hintText: 'EMAIL',
-                hintStyle: TextStyle(
-                  color: Color.fromARGB(250, 250, 0, 101),
-                ),
-                contentPadding: EdgeInsets.only(bottom: 15),
-                focusColor: Colors.white60),
+class myButton extends StatelessWidget {
+  myButton({required this.color, required this.title, required this.onPressed});
+
+  final Color color;
+  final String title;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Material(
+        elevation: 5,
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+        child: ElevatedButton(
+          onPressed: () => onPressed,
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          child: TextFormField(
-            onSaved: (val) {
-              password = val;
-            },
-            validator: (val) {
-              if (val != 3) {
-                return "your CIN must be 8 characters";
-              } else {
-                return null;
-              }
-            },
-            decoration: InputDecoration(
-                alignLabelWithHint: true,
-                icon: Icon(
-                  Icons.visibility_off,
-                  color: Color.fromARGB(255, 58, 105, 120),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
-                fillColor: Colors.white54,
-                hintText: 'PASSWORD',
-                hintStyle: TextStyle(
-                  color: Color.fromARGB(250, 250, 0, 101),
-                ),
-                contentPadding: EdgeInsets.only(bottom: 15),
-                focusColor: Colors.white60),
+      ),
+    );
+  }
+}
+
+class RaisedButton extends StatelessWidget {
+  RaisedButton(
+      {required this.color, required this.title, required this.onPressed});
+
+  final Color color;
+  final String title;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Material(
+        elevation: 5,
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+        child: MaterialButton(
+          onPressed: () => onPressed,
+          minWidth: 50,
+          height: 42,
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
           ),
+        ),
+      ),
+    );
+  }
+}
 
+class MyButton extends StatelessWidget {
+  MyButton({required this.color, required this.title, required this.onPressed});
 
-          
-        ),*/
+  final Color color;
+  final String title;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Material(
+        elevation: 5,
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+        child: MaterialButton(
+          onPressed: () => onPressed,
+          minWidth: 200,
+          height: 42,
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class buttoncheck extends StatelessWidget {
+  const buttoncheck({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: 150,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return caldoc();
+          }));
+        },
+        child: Text('Check Calendar'),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromRGBO(235, 13, 87, 1),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+      ),
+      margin: EdgeInsets.only(top: 10, bottom: 10),
+    );
+  }
+}
+
+class buttonsetting1 extends StatelessWidget {
+  const buttonsetting1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: 150,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return caldoc();
+          }));
+        },
+        child: Text('Check Calendar'),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromRGBO(235, 13, 87, 1),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+      ),
+      margin: EdgeInsets.only(top: 10, bottom: 10),
+    );
+  }
+}

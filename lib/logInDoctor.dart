@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '/homedoctor.dart';
 import 'package:tbibi/logo.dart';
-import 'package:tbibi/profileDoctor.dart';
-import 'package:tbibi/profilePatient.dart';
-import 'package:tbibi/widgets/button.dart';
 import 'package:tbibi/widgets/signUpDoctor.dart';
+import 'package:tbibi/reset_password.dart';
 
 class loginDoctor extends StatefulWidget {
   @override
@@ -64,7 +63,7 @@ class _loginDoctorState extends State<loginDoctor> {
                         borderSide: BorderSide(
                             color: Color.fromARGB(255, 58, 105, 120))),
                     fillColor: Colors.white54,
-                    hintText: 'CIN',
+                    hintText: 'ID Doctor',
                     hintStyle: TextStyle(
                       color: Color.fromARGB(250, 250, 0, 101),
                     ),
@@ -135,7 +134,7 @@ class _loginDoctorState extends State<loginDoctor> {
                     email: MyEmail, password: MyPassword);
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) {
-                  return NavBar();
+                  return Homedocter();
                 }));
               } catch (e) {
                 print(e);
@@ -157,7 +156,11 @@ class _loginDoctorState extends State<loginDoctor> {
                   'Reset',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return reset();
+                  }));
+                },
                 style: TextButton.styleFrom(
                   foregroundColor: Color.fromARGB(255, 58, 105, 120),
                 ))

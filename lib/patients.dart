@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tbibi/widgets/button.dart';
 
 class patients extends StatelessWidget {
   const patients({super.key});
@@ -372,6 +373,24 @@ class patients extends StatelessWidget {
             ]),
           ],
         ),
+        Row(
+          children: [
+            Icon(
+              Icons.assignment,
+              color: Color.fromARGB(250, 250, 0, 101),
+            ),
+            Text(
+              ' Search Patient ',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(30)),
+          ],
+        ),
+        buttonsearch(),
         Stack(
           alignment: Alignment.topLeft,
           children: <Widget>[

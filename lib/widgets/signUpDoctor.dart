@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tbibi/logInDoctor.dart';
 import 'package:tbibi/logo.dart';
-import 'package:tbibi/widgets/button.dart';
-import 'package:tbibi/widgets/signUpDoctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class signUpDoc extends StatefulWidget {
@@ -121,82 +119,82 @@ class _signUpState extends State<signUpDoc> {
                     contentPadding: EdgeInsets.only(bottom: 15),
                     focusColor: Colors.white60),
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  onChanged: (val) {
-                    phone = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.phone,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'PHONE',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: true,
-                  onChanged: (val) {
-                    psd = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.visibility_off,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'PASSWORD',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: true,
-                  onChanged: (val) {
-                    cpsd = val;
-                  },
-                  decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Color.fromARGB(255, 58, 105, 120),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 58, 105, 120))),
-                      fillColor: Colors.white54,
-                      hintText: 'CONFIRM PASSWORD',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(250, 250, 0, 101),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                      focusColor: Colors.white60),
-                ),
-              ),
             ],
           ))),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          onChanged: (val) {
+            phone = val;
+          },
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.phone,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'PHONE',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          obscureText: true,
+          onChanged: (val) {
+            psd = val;
+          },
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.visibility_off,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'PASSWORD',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          obscureText: true,
+          onChanged: (val) {
+            cpsd = val;
+          },
+          decoration: InputDecoration(
+              alignLabelWithHint: true,
+              icon: Icon(
+                Icons.lock,
+                color: Color.fromARGB(255, 58, 105, 120),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 58, 105, 120))),
+              fillColor: Colors.white54,
+              hintText: 'CONFIRM PASSWORD',
+              hintStyle: TextStyle(
+                color: Color.fromARGB(250, 250, 0, 101),
+              ),
+              contentPadding: EdgeInsets.only(bottom: 15),
+              focusColor: Colors.white60),
+        ),
+      ),
       Container(
         height: 50,
         width: 2,
