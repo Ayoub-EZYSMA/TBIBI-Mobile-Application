@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tbibi/logo.dart';
 
-
 class Dialog extends StatelessWidget {
   const Dialog({super.key});
 
@@ -79,7 +78,7 @@ class _resetState extends State<reset> {
                     fillColor: Colors.white54,
                     hintText: 'EMAIL',
                     hintStyle: TextStyle(
-                      color: Color.fromARGB(250, 250, 0, 101),
+                      color: Color.fromARGB(249, 250, 0, 101),
                     ),
                     contentPadding: EdgeInsets.only(bottom: 15),
                     focusColor: Colors.white60),
