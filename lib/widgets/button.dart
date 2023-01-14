@@ -592,20 +592,22 @@ class myButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Material(
-        elevation: 5,
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-        child: ElevatedButton(
-          onPressed: () => onPressed,
-          child: Text(
-            title,
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
+    return Container(
+      height: 40,
+      width: 180,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return caldoc();
+          }));
+        },
+        child: Text('Review & Add notes'),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 10, 64, 88),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
       ),
+      margin: EdgeInsets.only(top: 10, bottom: 10),
     );
   }
 }
