@@ -7,7 +7,8 @@ Last but not least, all users can call the closest hospital in case of an emerge
 
 This project is a starting point for a Flutter application.
 
-Dependencies you have to consider:
+## Dependencies you have to consider:
+
 -syncfusion_flutter_charts: ^19.1.54
 -babstrap_settings_screen: ^0.1.3
 -shared_preferences: ^2.0.16
@@ -21,11 +22,11 @@ Dependencies you have to consider:
 -syncfusion_flutter_calendar: ^19.1.54
 -firebase_core : ^2.4.0
 
-Add an assets section, like this:
+## Add an assets section, like this:
   assets:
     - images/
 
-To add custom fonts to your application, add a fonts section like thiss :
+## Add custom fonts to your application, add a fonts section like thiss :
   fonts:
     - family: Handlee
       fonts:
