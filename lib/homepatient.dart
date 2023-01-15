@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tbibi/calendarPatient.dart';
 import 'package:tbibi/mood.dart';
 import 'package:tbibi/rendez_vous.dart';
@@ -23,6 +25,7 @@ class _HomePatientState extends State<HomePatient> {
       _selectedIndex = value;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +61,7 @@ class _HomePatientState extends State<HomePatient> {
                       image: AssetImage('images/profilephoto.png')),
                   shape: BoxShape.circle,
                 )),
+            
             ListTile(
               leading: Icon(
                 Icons.home,
@@ -157,7 +161,7 @@ class _HomePatientState extends State<HomePatient> {
               textColor: Color.fromARGB(255, 58, 105, 120),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return setting();
+                  return SettingsScreen();
                 }));
               },
             ),

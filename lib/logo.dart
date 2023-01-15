@@ -10,7 +10,7 @@ class logo extends StatelessWidget {
       children: [
         Image.asset(
           'images/logo.png',
-          width: 80,
+          width: 79.9,
         ),
         Text(
           'TBIBI',

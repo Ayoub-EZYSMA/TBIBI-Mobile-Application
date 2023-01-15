@@ -162,7 +162,7 @@ class Homedocter extends StatelessWidget {
                 textColor: Color.fromARGB(255, 58, 105, 120),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return setting();
+                    return SettingsScreen();
                   }));
                 },
               ),

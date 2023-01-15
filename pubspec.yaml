@@ -34,10 +34,10 @@ dependencies:
   shared_preferences: ^2.0.16
   get: ^4.6.5
   flutter_launcher_icons: ^0.11.0
-  
+  image_picker: ^0.8.6
   date_time_picker: "^2.1.0"
   firebase_auth: ^4.2.0
-  
+  ionicons: ^0.2.1
   cloud_firestore: ^4.2.0
   
   flutter:

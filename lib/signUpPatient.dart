@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tbibi/logInPatient.dart';
 import 'package:tbibi/logo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -37,6 +40,10 @@ class _SignUpPatientState extends State<SignUpPatient> {
       'phone': phone,
       'psd': psd,
     });
+  }
+
+  Future log() async {
+    await loginPatient();
   }
 
   @override
@@ -225,6 +232,7 @@ class _SignUpPatientState extends State<SignUpPatient> {
           onPressed: () async {
             await adduser(_fname.text, _lname.text, _email.text,
                 int.parse(_phone.text), _psd.text);
+            _dialogBuilder(context);
           },
           child: Text('Sign Up'),
           style: ElevatedButton.styleFrom(
@@ -249,4 +257,51 @@ class _SignUpPatientState extends State<SignUpPatient> {
       ),
     ]));
   }
+}
+
+Future<void> _dialogBuilder(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          title: Container(
+              child: Column(children: [
+            Text(
+              'Hey it is Done!\nThank you for your time!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color.fromARGB(255, 10, 64, 88),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Text(
+              "YOUR HEALTH IS IMPORTANT TO US <3",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color.fromARGB(255, 16, 91, 123),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return loginPatient();
+                  }));
+                },
+                child: Text(
+                  'Log in',
+                  style: TextStyle(
+                      color: Color.fromARGB(250, 250, 0, 101),
+                      fontWeight: FontWeight.bold),
+                )),
+          ])));
+    },
+  );
 }
