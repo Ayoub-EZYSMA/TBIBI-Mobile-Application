@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tbibi/logInPatient.dart';
+import 'package:tbibi/main.dart';
 import 'package:tbibi/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -80,7 +81,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 title: "Logout",
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return loginPatient();
+                    return MyStatefulWidget();
                   }));
                 },
               ),
