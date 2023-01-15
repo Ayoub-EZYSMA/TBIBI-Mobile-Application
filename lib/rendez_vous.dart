@@ -80,6 +80,9 @@ class _rendezvousState extends State<rendezvous> {
                     }));
                   },
                 ),
+                SizedBox(
+                  height: 20,
+                )
               ],
             )));
   }

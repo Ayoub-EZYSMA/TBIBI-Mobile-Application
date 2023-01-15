@@ -133,6 +133,9 @@ class idpage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10))),
             ),
           ),
+          SizedBox(
+            height: 25,
+          )
         ]));
   }
 }

@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:tbibi/calendarPatient.dart';
 import 'package:tbibi/mood.dart';
 import 'package:tbibi/rendez_vous.dart';
