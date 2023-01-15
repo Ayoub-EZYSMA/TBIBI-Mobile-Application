@@ -23,11 +23,11 @@ This project is a starting point for a Flutter application.
         -firebase_core : ^2.4.0
 
 ## Add an assets section, like this:
-  assets:
-    - images/
+        assets:
+            - images/
 
 ## Add custom fonts to your application, add a fonts section like thiss :
-  fonts:
-    - family: Handlee
-      fonts:
-        - asset: fonts/Handlee-Regular.ttf
+        fonts:
+            - family: Handlee
+            fonts:
+                - asset: fonts/Handlee-Regular.ttf
