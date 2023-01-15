@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tbibi/logInPatient.dart';
 import 'package:tbibi/main.dart';
 import 'package:tbibi/profile.dart';
-import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:tbibi/widgets/settings_tile.dart';
 
