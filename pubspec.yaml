@@ -39,6 +39,8 @@ dependencies:
   firebase_auth: ^4.2.0
   ionicons: ^0.2.1
   cloud_firestore: ^4.2.0
+  archive: ^3.3.8
+
   
   flutter:
     sdk: flutter
